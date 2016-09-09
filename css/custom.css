@@ -1,0 +1,394 @@
+/* Index.php */
+#search-bar{
+    text-align: center;
+    margin: 0 30% 0 30%;
+}
+
+#top{
+    color: white;
+}
+
+body{
+    background-size: cover;
+}
+
+#body-container{
+    margin: 2% 10% 0% 10%;
+    background: rgba(255,255,255, 0.77);
+    
+
+}
+
+.festival-image{
+    height: 400px;
+    width: 600px;
+    margin-left: 5%;
+}
+
+.text-vertical-center h1 {
+    color: red;
+    text-shadow: 2px 2px black;
+}
+
+.text-vertical-center h3 {
+    color: cyan;
+    text-shadow: 2px 2px black;
+}
+
+a:link, a:visited{
+    color:black;
+}
+
+a:hover{
+    color: blue;
+}
+
+/* festival_detail.php */
+#img-lineup{
+    width: 400px;
+    height: 600px;
+    width: 100%;
+}
+
+td{
+    font-size: 2em;
+}
+
+hr{
+    margin: 20px 20px 0 20px;
+    padding-bottom: 20px;
+    border-top: dotted 3px;
+    color: grey;
+}
+
+#result-table{
+    text-align: center;
+    width: 90%;
+    
+}
+
+#search-result-table{
+    margin-bottom: -40px;
+}
+
+
+table{
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-collapse: separate;
+    border-spacing: 15px 0px;
+    paddding: 10px 30px 10px 30px;
+    text-align: center;
+   
+}
+
+
+table #table-location{
+    font-size: 1.5em;
+    background-color: white;
+    border-radius:  0 0 5px 5px;
+    width: auto;
+}
+
+table #table-festival{
+    background-color: #e6f7ff;
+    padding: 0 20px 0 20px;
+    border-radius: 5px 5px 0 0;
+    text-shadow: 3px 3px white;
+}
+
+
+table #table-date{
+    padding: 0 30px 0 30px;
+    background-color: #33bbff;
+    border-radius: 5px;
+    color: white;
+    text-shadow: 2px 2px black;
+}
+
+html { 
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
+          width: 100%;
+}
+
+#bland_title{
+    background-color: red;
+}
+
+#detail-table-container{
+    font-size: 0.7em;
+    margin-right: 30px;
+    padding-bottom: 10px;
+}
+
+#detail-table, #detail-table tr{
+    border: 1px solid black;
+    text-align: left;
+}
+
+#detail-table td{
+    margin-top: -30px;
+}
+
+#full-lineup{
+    text-align: center;
+    font-size: 2em;
+    background-color: grey;
+    color: white;
+}
+
+#special-note{
+    text-align: center;
+    font-size: 2em;
+    background-color: grey;
+    color: white;
+}
+
+/*nav{
+    display: none;
+}*/
+
+#list-lineup {
+    font-size: 0.8em;
+    text-align: center;
+    padding-right: 10%;
+}
+
+.list-lineup ul:after{
+    content:"";
+    clear:both;
+    display: block;
+}
+
+.list-lineup ul li{
+    display: block;
+    float: left;
+}
+
+th{
+    text-align: center;
+    font-size: 2em;
+}
+
+button{
+    background-color: grey;
+    border:none;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: black;
+}
+
+
+/* artist_detail.php */
+#artist-detail-page{
+    margin-top: 50px;
+}
+
+#artist-logo{
+    width: 100%;
+    max-height: 200px;
+    padding-top: 30px;
+}
+
+#artist-detail h2{
+    margin-bottom: -20px;
+    text-align: center;
+    color: red;
+    text-shadow: 1px 1px black;
+}
+
+iframe{
+ position: relative;
+ clear: top;
+ text-align: center;
+ max-width: 100%;
+}
+
+
+p{
+    font-size: 1.2em;
+    padding: 30px 20px 20px 20px;
+    margin: 30px 20px 30px 20px;
+    background-color: #e8e8e8;
+    background: rgba(232, 232, 232, 0.7);
+}
+
+@media (max-width: 800px){
+    p{
+        font-size: 1em;
+    }
+    
+    #artist_logo{
+        width: 100%;
+    }
+}
+
+/* index.php most viewed festival section */
+.img-most-viewed{
+    width: 300px;
+    height: 300px;
+}
+
+#most-popular-festivals{
+    background-color: #3973ac;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#most-popular-festivals h1{
+    color: white;
+    font-size: 4em;
+    text-shadow: 2px 2px black;
+    padding-bottom: 35px;
+    
+}
+
+.grid-block {
+	position: relative;
+        align-items: left;
+	width: 300px;
+	height: 304px;
+	margin: 0 0 30px 30px;
+        border: solid #333 2px;
+}
+.grid-block h4 {
+	font-size: .9em;
+	color: #333;
+	background: #f5f5f5;
+	margin: 0;
+	padding: 10px;
+	border: 1px solid #ddd;
+}
+
+.grid-block p {
+	color:white;
+}
+ 
+.caption {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url(../img/trans-black-50.png);
+	width: 100%;
+	height: 100%;
+}
+.caption h3, .caption p {
+	color: #fff;
+	margin: 20px;
+}
+
+.caption p{
+    font-size: 2em;
+}
+.caption h3 {
+	margin: 20px 20px 10px;
+}
+.caption p {
+	font-size: .75em;
+	line-height: 1.5em;
+	margin: 0 20px 15px;
+}
+.caption a.btn-festival-detail {
+	padding: 5px 10px;
+	background: #08c;
+	color: #fff;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	font-weight: bold;
+	text-decoration: none;
+        margin-top: 50px;
+}
+.caption a.detail:hover {
+	background: #fff;
+	color: #08c;
+}
+
+/* index.php recently modified artist section */
+#modified p{
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+#modified h2{
+    padding: 40px 0 40px 0;
+}
+
+#modified img{
+    width: 130px;
+    height: 130px;
+}
+
+.modified-artist-container{
+    padding-top: 20px;
+}
+
+.modified-artist-container:hover{
+    opacity: 0.5;
+}
+
+
+/* footer.php */
+#footer{
+     background-color: #f0f0f0;
+}
+
+#footer hr{
+    border-top: solid 2px;
+    border-color: red;
+    margin-left: -50px;
+    margin-right: -0.2px;
+   
+}
+
+/* browse_festivals.php */
+#browse-festival-page{
+    margin-top: 80px;
+    text-align: center;
+}
+
+#browse-festival-page a{
+    font-size: 1.2em;
+}
+
+#index-by-alphabet{
+    margin-top: -50px;
+    margin-bottom: 50px;
+}
+
+#index-by-alphabet a{
+    font-size: 1.5em;
+    margin: 0 2px 0 2px;
+}
+
+#artist-edit-page{
+    margin-top: 60px;
+}
+
+#artist-edit-page textarea{
+    width: 80%;
+}
+
+#artist-edit-page img{
+    width: 100%;
+    border: solid black 2px;
+    margin-bottom: 20px;
+}
+
+#btn-submit{
+    text-align: center;
+    padding: 15px 100px 15px 100px;
+}
+
+
+#sidebar{
+    display: none;
+}
