@@ -123,13 +123,13 @@ error_reporting(0);
             <h2>Signature Song</h2><br><br>
             <p>
                 <?php 
-                    if($signature_song !== null){
+                    if($signature_song != null){
                         echo $signature_song;
                         echo "<span style='display:none;'><textarea id='textarea-signature-song' rows='0' cols='0'></textarea></span>";
                         
                     } else{
-                        echo "Please copy and paste the embded code of the song from Youtube<br>";
-                        echo "Example: <br><a href='img/embed_example.png' target='blank'><img src='img/embed_example.png'></a>";
+                        echo "Please copy and paste the embded code of the song<br>";
+                        echo "Example from Youtube: <br><a href='img/embed_example.png' target='blank'><img src='img/embed_example.png'></a>";
                         echo "<br><textarea id='textarea-signature-song' rows='4'></textarea><br>";
                     }
                 ?>
@@ -144,7 +144,7 @@ error_reporting(0);
                 <br><br>
                 Add more about the song:<br> <textarea id="textarea-about-signature-song" name="textarea-genre" rows="5"></textarea><br>
             </p>
-            <button class="btn btn-danger btn-lg center-block" id="btn-submit" onclick="submit()">Submit the change</button>
+            <button class="btn btn-danger btn-lg center-block" id="btn-submit" onclick="submit()">Submit changes</button>
         </div>
         </div>
         

@@ -1,4 +1,5 @@
 <?php
+    error_reporting(0);
     session_start();
     $db = DB::getInstance();
     $mysqli = $db->connect();

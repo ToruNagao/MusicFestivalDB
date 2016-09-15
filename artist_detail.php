@@ -2,13 +2,23 @@
 <html lang="en">
 
 <?php 
+    error_reporting(0);
     // Connect to DB
     include 'database/db.php';
+    session_start();
     $artist_name = urldecode($_GET['artist_name']);
     $artist_image_path = str_replace(" ", "_", $artist_name);
     $artist_image_path = strtolower($artist_image_path);
     $db = DB::getInstance();
     $mysqli = $db->connect();
+    
+    if(isset($_SESSION["login_user"])) {
+        $edit_message ="Edit";
+        $edit_btn_function = "edit()";
+    } else {
+        $edit_message = "Login to Edit";
+        $edit_btn_function = "login()";
+    }
     
     // Retrieve information from DB for the artist
     $query = "SELECT * FROM artist where artist_name = '$artist_name'";
@@ -88,7 +98,7 @@
             <p>
                 <?php echo $genre. "<br>" ?>
                 <?php echo $about ?>
-                <button class='pull-right btn btn-info' onclick="edit()">Edit</button>
+                <button class='pull-right btn btn-info' onclick="<?php echo $edit_btn_function ?>"><?php echo $edit_message?></button>
             </p>
             
         </div>
@@ -119,7 +129,7 @@
                 <?php
                     echo $about_signature_song;
                 ?>
-                <button class='pull-right btn btn-info' onclick="edit()">Edit</button>
+                <button class='pull-right btn btn-info' onclick="edit()"><?php echo $edit_message?></button>
             </p>
         </div>
         <hr>

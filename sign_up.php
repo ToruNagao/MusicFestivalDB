@@ -1,5 +1,5 @@
 <?php
-    include 'database/db.php';
+    include realpath(__DIR__ ) . '/database/db.php';
     
     $db = DB::getInstance();
     $mysqli = $db->connect();
@@ -19,10 +19,9 @@
             
             header("location: index.php");
         } else {
-            $error = "Username or Password is invalid";
+            $error = "Password didn't match";
         }
     }
-    
     ?>
     
     <html>
@@ -89,22 +88,25 @@
    
        <?php include_once("navigation.php"); ?>
        <body>
-           <div id="login-page">
+           <div id="sign-up-page">
            <div id="body-container">
       <div align = "center">
          <div style = "width:300px; border: solid 1px #333333; " align = "left">
-            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
+            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Sign Up</b></div>
 				
             <div style = "margin:30px">
                
                <form action = "" method = "post">
-                  <label>UserName  :</label><input type = "text" name = "username" class = "box"/><br /><br />
-                  <label>Password  :</label><input type = "password" name = "password" class = "box" /><br/><br />
-                  <input type = "submit" value = " Login "/> &nbsp;&nbsp;or&nbsp;&nbsp; <a href="sign_up.php"><btn type = "submit" value = " Sign Up "/>Sign Up</btn></a><br />
+                  <label>UserName  :</label><input type = "text" name = "username" class = "box" id="username"/><br />
+                  <a onclick="validate_username()">Check UserName: </a><div id="check-result-username"></div><br />
+                  
+                  <label>Password  :</label><input type = "password" name = "password" class = "box" id="password"/><br/><br />
+                  <label>Re-enter Password  :</label><input type = "password" name = "password" class = "box" id="re-password" /><br/>
+                  
+                  <a onclick="validate_password()" class="btn btn-default">Sign Up</a><br />
                </form>
                 
-               
-               <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
+               <div id="check-result-pw"></div>
 					
             </div>
 				
@@ -117,3 +119,53 @@
     <?php include_once("footer.php");?>
    </body>
 </html>
+
+<script type="text/javascript">
+    function validate_username(){
+        var username = document.getElementById("username").value;
+        
+        $.ajax({
+            url: "scripts/validate.php",
+            type: "POST",
+            dataType: "Text",
+            data:{ "username": username  },
+            success:function(response) {
+                console.log("success");
+                document.getElementById("check-result-username").innerHTML = username + " is " + response;
+                return true;
+           },
+           error:function() {
+               console.log("eroor");
+           }
+
+      });
+      return false;
+    }
+    
+function validate_password(){
+   
+    var pw1 = document.getElementById("password").value;
+    var pw2 = document.getElementById("re-password").value;
+    if(pw1 == pw2){ 
+        if(validate_username()){
+        var username = document.getElementById("username").value;
+        $.ajax({
+            url: "scripts/create_user.php",
+            type: "POST",
+            data: {"username" : username, "password": pw1},
+            dataType: "Text",
+            success: function(response){
+                console.log("data has been sent");
+                //console.log(response)
+                location.href = "login.php";
+            },
+            error: function(){
+                console.log("data has NOT been sent");
+                
+            }
+        });}
+    } else {
+        document.getElementById("check-result-pw").innerHTML = "Your Passwords didn't match";
+    }
+}
+</script>

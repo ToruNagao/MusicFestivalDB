@@ -51,4 +51,8 @@ function submit(){
     location.href = "artist_detail.php?artist_name=" + artist_name_url;
 });
 
-    }}
+}}
+
+function login(){
+    location.href = "login.php";
+}

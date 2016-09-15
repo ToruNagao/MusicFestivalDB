@@ -2,6 +2,7 @@
 <html lang="en">
 
     <?php    
+    error_reporting(0);
     include 'ChromePhp.php'; // Including for debugging
      
     include 'database/db.php';

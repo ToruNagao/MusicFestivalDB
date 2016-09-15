@@ -471,3 +471,15 @@ p{
 #browse-festival-ranking-page table{
     opacity: 0.9;
 }
+
+#login-page{
+    margin-top: 70px;
+}
+
+#sign-up-page{
+    margin-top: 70px;
+}
+
+#sign-up-page #check-result-pw, #sign-up-page #check-result-username{
+   color: red;
+}

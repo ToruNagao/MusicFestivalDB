@@ -1,4 +1,5 @@
-<?php 
+<?php  
+    error_reporting(0);
     include "session.php";
     
     if(isset($_SESSION['login_user'])){
