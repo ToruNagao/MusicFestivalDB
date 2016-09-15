@@ -3,7 +3,7 @@
 
     <?php    
     include 'ChromePhp.php'; // Including for debugging
-    include_once('navigation.html');    
+     
     include 'database/db.php';
     
     // Retrieve URL variables and setup DB connection
@@ -104,12 +104,12 @@
 
 <body id="page-top" background="img/festivals/main/<?php echo $background_image;?>.jpg">
 
-    
+    <?php include_once('navigation.php');    ?>
     <div id='festival-detail-page'>
     <div id="body-container">
         <a href="index.php">Home</a> >> <?php echo "<a href=javascript:history.back()>" . $festival_name . "</a> >> " . $year ; ?> 
         <div id="detail-table-container">
-        <table id="detail-table">
+        <table id="detail-table" data-role="table" class="ui-responsive">
             <tr>
                 <td rowspan="4"><a href="<?php echo $image_path ?>" target="=blank"><img id="img-lineup" src="<?php echo $image_path ?>"/></a></td>
                 <td>
@@ -142,7 +142,7 @@
         Lineup by Day
         </div>
         <div id='list-lineup'>
-        <table class='table'>
+        <table class='table' data-role="table" class="ui-responsive">
             <thead class="thead-inverse">
         <?php 
         // Print the lineup by date
@@ -179,9 +179,12 @@
                 </thead>
         </table>
         </div>
-         <div id="special-note">
-        What's Special About This Year?
-        
+        <div id="special-note">
+        What's Special About This Year? Leave us comments!
+        </div>
+        Name:    <textarea cols="150" rows="1"></textarea><br>
+        Comment: <textarea cols="150" rows="3"></textarea>
+     
         </div>
         </div>
         

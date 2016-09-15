@@ -2,6 +2,7 @@
 <html lang="en">
 <?php    
     include 'database/db.php';
+    include_once('navigation.php');
     $search_term = $_POST['search-term'];
     $num_result = 0;
     $festival_name = array();
@@ -75,7 +76,7 @@
 
 <body id="page-top" background="img/main_back.jpg">
     
-    <?php    include_once('navigation.html'); ?>
+
 
     <div id="body-container">
         <a href="index.php">Home</a> >> <?php echo $search_term; ?>
@@ -89,7 +90,7 @@
     for ($i = 0; $i < $num_result; $i++){
         $festival_name_url = urlencode($festival_name[$i]);
 echo <<<HTML
-    <table id="result-table"> 
+    <table id="result-table" data-role="table" class="ui-responsive"> 
     <tr> 
       <td id='table-date' rowspan='2'>{$date[$i]}<br>{$year[$i]}</td> 
       <td id='table-festival'><a href="festival_detail.php?festival={$festival_name_url}&year={$year[$i]}">{$festival_name[$i]} {$year[$i]}</a></td>

@@ -1,5 +1,4 @@
-<?php
-/**
+<?php /**
  * Copyright 2010-2013 Craig Campbell
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

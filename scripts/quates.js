@@ -1,5 +1,4 @@
-<?php
-$quate = [
+var quates = [
     '"One good thing about music, when it hits you, you feel no pain." - Bob Marley',
     '"Music is my religion." - Jimi Hendrix',
     '"And I\'ll keep listening to the great Joe Strummer cause through music we can live forever." - Tim Armstrong',
@@ -39,14 +38,22 @@ $quate = [
     '"I don\'t sing because I\'m happy; I\'m happy because I sing." - William James',
     '"Music is a world within itself, it is a language We all understand." - Stevie Wonder',
     '"No matter what language we speak, what color we are, '
-    . 'the form of our politics or the expression of our love and our faith, music proves: We are the same." - John Denver',
+    + 'the form of our politics or the expression of our love and our faith, music proves: We are the same." - John Denver',
     '"Music washes away from the soul the dust of everyday life." - Berthold Auerbach',
     '"Music gives a soul to the universe, wings to the mind, flight to the imagination, and life to everything." - Plato',
     '"Hip-hop has done more than any leader, politician, or anyone to improve race relations." - Jay-Z',
     '"My music will go on forever." - Bob Marley',
     '"Live the life you love. Love the life you live." - Bob Marley',
-    '"One love, one heart, Let’s get together and feel alright." - Bob Marley',
+    '"One love, one heart, Let\'s get together and feel alright." - Bob Marley',
     '"The rhymes will heal cause I believe in music. In times of need I won\'t be leaving you sick. The beat plus the melody\'s the recipe.'
-    . ' Hip-hop world wide we got to live in peace." - Shing02',
+    + ' Hip-hop world wide we got to live in peace." - Shing02',
     '"I know that I\'ll be happier, and I know you will too. Eventually" - Kevin Parker'];
-?>
+
+
+function printQuate(){
+    document.write(quates[randomInt(0, quates.length)]);
+}
+
+function randomInt(min, max){
+    return (Math.floor((Math.random() * max) + min));
+}

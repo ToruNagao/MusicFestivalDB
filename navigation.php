@@ -1,4 +1,19 @@
-include 'database/db.php';    
+<?php 
+    include "session.php";
+    
+    if(isset($_SESSION['login_user'])){
+        $login_status = "Log Out";
+        $login_status_link = "logout.php";
+        $welcome_message = "Welcome ". $login_session . " !";
+        
+    } else {
+        $login_status = "Log In";
+        $login_status_link = "login.php";
+        $welcome_message = "";
+    }
+?>
+
+
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,9 +44,11 @@ include 'database/db.php';
                         <a class="page-scroll" href="index.php#footer">Contact</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="login.php">Login</a>
+                        <a class="page-scroll" href="<?php echo $login_status_link ?>"><?php echo $login_status ?></a>
                     </li>
-                    <?php echo $login_session ?>
+                    <li>
+                        <a id="welcome-message" style="font-weight: bold; color:red;" ><?php echo $welcome_message?></a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

@@ -43,6 +43,11 @@ a:hover{
     color: blue;
 }
 
+/* navigation.php */
+#mainNav #welcome-message{
+    font-weigt: bold;
+}
+
 /* festival_detail.php */
 #img-lineup{
     width: 400px;
@@ -72,13 +77,13 @@ hr{
 }
 
 
-table{
+#result-table{
     margin-left: 5%;
     margin-top: 10px;
     margin-bottom: 20px;
     border-collapse: separate;
     border-spacing: 15px 0px;
-    paddding: 10px 30px 10px 30px;
+    padding: 10px 30px 10px 30px;
     text-align: center;
    
 }
@@ -124,6 +129,18 @@ html {
     margin-right: 30px;
     padding-bottom: 10px;
 }
+
+#detail-table{
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-collapse: separate;
+    border-spacing: 15px 0px;
+    padding: 10px 30px 10px 30px;
+    text-align: center;
+   
+}
+
 
 #detail-table, #detail-table tr{
     border: 1px solid black;
@@ -243,7 +260,7 @@ p{
     padding-bottom: 30px;
 }
 
-#most-popular-festivals h1{
+#most-popular-festivals h1, #browse-festival-ranking-page h1{
     color: white;
     font-size: 4em;
     text-shadow: 2px 2px black;
@@ -391,4 +408,66 @@ p{
 
 #sidebar{
     display: none;
+}
+
+/* browse_festival_ranking page*/
+
+#browse-festival-ranking-page{
+    margin: 50px 20% 0 20%;
+}
+
+#ranking-table{
+    text-align: left;
+    
+    border: 1;
+}
+
+#ranking-table img{
+    height: 150px;
+    width: 150px;
+}
+
+#ranking-table td{
+  vertical-align: middle;
+  margin-top: -100px;
+}
+
+#browse-festival-ranking-page h2{
+   text-shadow: 3px 3px pink;
+   color: red;
+   margin: 0 -5% -3% 0;
+   position: relative;
+   left:50px;
+   font-size:1.3em;
+   font-weight: bold;
+   z-index: 1;
+}
+
+#browse-festival-ranking-page #crown{
+    position: relative;
+    top: -55px;
+    left: 35px;
+    height: 70px;
+    width: 70px;
+    z-index: 0;
+}
+
+#browse-festival-ranking-page #img-most-viewed-thumb{
+    position:relative;
+    top:-50px;
+}
+
+#browse-festival-ranking-page h1{
+    color: red;
+    font-size: 4em;
+    text-shadow: 3px 3px white;
+    padding-bottom: 35px;
+    text-align: center;
+    padding-top:50px;
+    font-weight: bold;
+    
+}
+
+#browse-festival-ranking-page table{
+    opacity: 0.9;
 }

@@ -5,7 +5,7 @@
     include 'ChromePhp.php';
     include 'database/db.php';
     include 'quates.php';
-    include_once('navigation.html');
+    include_once('navigation.php');
     $db = DB::getInstance();
     $mysqli = $db->connect();
     $mysqli->set_charset('utf-8');
@@ -72,6 +72,7 @@
 
     <script src="scripts/moblie_menu.js"></script>
     <script src="scripts/mouseover_effects.js" type="text/javascript"></script>
+    <script src="scripts/quates.js" type="text/javascript"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -102,11 +103,12 @@
     </header>
 
     <!-- About -->
-    <section id="about" class="about">
+    <section id="quate" class="quate">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <p class="lead"><?php echo $quate[rand(0, count($quate) - 1)]; ?></p>
+                    <h4>Random Quate about Music, Love, Life...</h4>
+                    <p class="lead" id="random_quate"><script  type="text/javascript">printQuate();</script></p>
                 </div>
             </div>
             <!-- /.row -->
@@ -138,7 +140,7 @@ HTML;
     }
 ?>
                     </div>
-                    <a href="browse_festivals.php" class="btn btn-default">See more popular festivals</a>
+                    <a href="browse_festivals_ranking.php" class="btn btn-default">See more popular festivals</a>
                 </div>
                 <!-- /.col-lg-10 -->
             </div>
@@ -153,7 +155,7 @@ HTML;
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-10 col-lg-offset-1">
-                    <h2>Recently Updated Artist</h2>
+                    <h2>Recently Updated Artists</h2>
                     <div class="row">
 <?php 
 

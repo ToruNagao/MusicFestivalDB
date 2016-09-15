@@ -77,7 +77,7 @@
 
 </head>
 <body id="page-top" background="img/artists/<?php echo $artist_image_path;?>.jpg">
-    <?php    include_once('navigation.html'); ?>
+    <?php    include_once('navigation.php'); ?>
     <div id='artist-detail-page'>
     <div id="body-container">
         

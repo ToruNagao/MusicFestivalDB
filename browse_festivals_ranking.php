@@ -10,16 +10,24 @@
     $mysqli = $db->connect();
     $mysqli->set_charset('utf-8');
     
+    $limit = 100;
     $festival_name_array = array();
+    $festival_name_array_url = array();
     $year_array = array();
-    $festival_name_begin_with = $_GET['begin_with'];
-    $query = "SELECT * FROM year WHERE festival_name LIKE '$festival_name_begin_with%'";
+    $year_array_url = array();
+    $hit_count_array = array();
+    $image_path_array = array();
+    $location_date_array =array();
+    $query = "SELECT * FROM year ORDER BY hit_count DESC LIMIT $limit";
     $result = $mysqli->query($query);
     while(($row_data = @$result->fetch_assoc()) !== NULL) {
-        array_push($festival_name_array, $row_data['festival_name']);
-        array_push($year_array, $row_data['year']);
+         array_push($festival_name_array, $row_data['festival_name']);
+         array_push($year_array, $row_data['year']);
+         array_push($hit_count_array, $row_data['hit_count']);
+         array_push($image_path_array, $row_data['image_path']);
+         array_push($location_date_array, $row_data['year'] 
+                 . " " . $row_data['month'] . " " . $row_data['date'] . " " . $row_data['location']);
     }
-    
 ?>
     
 <head>
@@ -53,6 +61,7 @@
 
     <script src="scripts/moblie_menu.js"></script>
     <script src="scripts/mouseover_effects.js" type="text/javascript"></script>
+    <script src="scripts/quates.js" type="text/javascript"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -62,13 +71,36 @@
 
 </head>
 
-<body id="page-top">
-<div id="browse-festival-page">
-    <div id="caption">Browse festivals begin with "<?php echo $festival_name_begin_with?>"</div><br>
-<?php
-    for($i = 0; $i < count($festival_name_array) ; $i++){
-        $festival_name_url = urlencode($festival_name_array[$i]);
-        echo "<a href='festival_detail.php?festival=$festival_name_url&year=$year_array[$i]'>" . $festival_name_array[$i] . " " . $year_array[$i] . "</a><br>";
+<body id="page-top" background="img/main_back.jpg">
+<div id="browse-festival-ranking-page">
+    <h1>Top 100 Popular Festivals</h1>
+<?php 
+    for ($i = 0; $i < count($festival_name_array); $i++){
+        $rank = $i + 1;
+        $crown_img = "";
+        switch ($i){
+            case 0:
+                $crown_img = "crown_gold.png";
+                break;
+            case 1:
+                $crown_img = "crown_silver.png";
+                break;
+            case 2: 
+                $crown_img = "crown_bronze.png";
+                break;
+            default:
+                $crown_img = "crown.png";
+        }
+echo <<<HTML
+        <table id="ranking-table" class="table table-striped table-bordered">
+            <tr>
+                <td><h2 id="rank">$rank</h2><img src="img/$crown_img" id="crown"><img class=" img-responsive" id="img-most-viewed-thumb" src="$image_path_array[$i]"></td></td>
+                <td><h3>$festival_name_array[$i] $year_array[$i]</h3><h3>$location_date_array[$i]</h3></td>
+                <td><h3>$hit_count_array[$i] views<br><br><a href="festival_detail.php?festival=$festival_name_array[$i]&year=$year_array[$i]?>" class="btn-festival-detail">Go to the Festival Page</a></h3></td>
+            </tr>
+            <div id="load-more"></div>
+        </table>
+HTML;
     }
 ?>
 </div>
@@ -77,5 +109,4 @@
 </body>
 
 </html>
-
 
