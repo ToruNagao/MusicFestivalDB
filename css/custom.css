@@ -165,14 +165,47 @@ html {
     color: white;
 }
 
+#comment{
+    text-align: center;
+    margin-top:20px;
+}
+
+#comment button{
+    margin-top: -28px;
+}
+
+textarea{
+    resize: none;
+    width: 80%;
+}
+
+#comment-log table tr td {
+    font-size: 1.2em;
+    max-width: 300px;
+    word-wrap:break-all;
+
+}
+
+#comment-log table th {
+    font-size: 1.2em;
+}
+
+#comment-log table tr td:nth-child(2),
+#comment-log table tr td:nth-child(3),
+#comment-log table th:nth-child(2),
+#comment-log table th:nth-child(3) {
+    font-size: 1.2em;
+    text-align: right;
+}
+
+
 /*nav{
     display: none;
 }*/
 
-#list-lineup {
+#lineup-table {
     font-size: 0.8em;
     text-align: center;
-    padding-right: 10%;
 }
 
 .list-lineup ul:after{
@@ -472,6 +505,7 @@ p{
     opacity: 0.9;
 }
 
+/* Login and Sign Up pages*/
 #login-page{
     margin-top: 70px;
 }

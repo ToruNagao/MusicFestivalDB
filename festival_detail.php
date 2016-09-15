@@ -2,6 +2,8 @@
 <html lang="en">
 
     <?php    
+    date_default_timezone_set("America/Los_Angeles");
+    
     error_reporting(0);
     include 'ChromePhp.php'; // Including for debugging
      
@@ -71,6 +73,16 @@
         $full_lineup[] = explode(",", $day);    
     }
    
+    $username_array = array();
+    $comment_array = array();
+    $comment_date_array = array();
+    $query = "SELECT * FROM `comment` WHERE `festival_name` = '$festival_name' AND `year` = '$year'";
+    $result = $mysqli->query($query);
+    while(($row_data = @$result->fetch_assoc()) !== NULL) {
+        array_push($username_array, $row_data['username']);
+        array_push($comment_array,$row_data['comment']);
+        array_push($comment_date_array, $row_data['date']);
+    }   
   
     ?>
 <head>
@@ -84,7 +96,7 @@
     
     <title>Festival Detail - <?php echo $title?></title>
 
-    <!-- Bootstrap Core CSS -->
+   <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
@@ -94,12 +106,25 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
     
     <link rel="shortcut icon" href="img/heart.ico">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
     <script src="scripts/moblie_menu.js"></script>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="scripts/mouseover_effects.js" type="text/javascript"></script>
+    <script src="scripts/quates.js" type="text/javascript"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 
 
@@ -143,7 +168,7 @@
         Lineup by Day
         </div>
         <div id='list-lineup'>
-        <table class='table' data-role="table" class="ui-responsive">
+        <table class='table' data-role="table" class="ui-responsive" id="lineup-table">
             <thead class="thead-inverse">
         <?php 
         // Print the lineup by date
@@ -181,11 +206,35 @@
         </table>
         </div>
         <div id="special-note">
-        What's Special About This Year? Leave us comments!
+        What's Special About This Year? Leave us a comment!
         </div>
-        Name:    <textarea cols="150" rows="1"></textarea><br>
-        Comment: <textarea cols="150" rows="3"></textarea>
-     
+
+        <div id="comment-log">
+            <table class="table table-striped" data-role="table" class="ui-responsive">
+                <th>Comment</th><th>Name</th><th>Date</th>
+                <?php 
+                for($i = 0; $i < count($comment_array) ; $i++){
+                    
+                
+echo <<<HTML
+                <tr>
+                    <td>$comment_array[$i]</td><td>$username_array[$i]</td><td>$comment_date_array[$i]</td>
+                </tr>
+HTML;
+                }
+                ?>
+                <tr>
+                <td><div id="new-comment-td"></td><td><div id="new-username-td"></td><td><div id="new-date-td"></td>
+                </tr>
+            </table>
+            
+        </div>
+        <div id="comment">
+            <textarea cols="150" rows="3" id="new-comment"></textarea>
+            <button class='btn btn-info' onclick="insert_comment()">Comment</button>
+        </div>
+        </div> <!-- body-container -->
+        
         </div>
         </div>
         
@@ -195,9 +244,40 @@
         
     <!-- Footer -->
     <?php include_once("footer.php");?>
-       
-        
-    
-
 </body>
 </html>
+
+<script type="text/javascript">
+ 
+function insert_comment(){ 
+    var new_comment = document.getElementById("new-comment").value;
+    var festival_name = "<?= $festival_name ?>";
+    var year = <?= $year ?>;
+    if("<?= $login_session ?>" != "") {
+        var username = "<?= $login_session ?>";
+    } else {
+        username = "anonymous";
+    }
+    
+    var new_username = username;
+    $.ajax({
+        url: "scripts/insert_comment.php",
+        type: "POST",
+        dataType: "Text",
+        data: {"festival_name": festival_name, "year": year, "username": username, 
+            "new_comment": new_comment,},
+        success: function(response){
+            console.log(response);
+            document.getElementById("new-comment-td").innerHTML = document.getElementById("new-comment").value;
+            document.getElementById("new-username-td").innerHTML = "You";
+            document.getElementById("new-date-td").innerHTML = "Just Now";
+            
+        },
+        error: function(){
+            
+        }
+    }); 
+    
+}
+
+</script>
