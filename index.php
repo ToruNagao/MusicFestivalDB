@@ -131,7 +131,7 @@ echo <<<HTML
                 <h4>$hit_count_array[$i] views</h4>
                 <h3>$festival_name_array[$i] $year_array[$i]</h3>
                 <h3>$location_date_array[$i]</h3><br>
-                <a href="festival_detail.php?festival=$festival_name_array[$i]&year=$year_array[$i]?>" class="btn-festival-detail">Go to the Festival Page</a>
+                <a href="festival_detail.php?festival=$festival_name_array[$i]&year=$year_array[$i]?>" class="btn-festival-detail" alt="">Go to the Festival Page</a>
             </div>
         <img class=" img-responsive img-most-viewed" src="$image_path_array[$i]">
         </div>
@@ -162,11 +162,14 @@ HTML;
     for ($i = 0; $i < $limit-1; $i++){
         $artist_image_path = strtolower($artist_name_array[$i]);
         $artist_image_path = str_replace(' ', '_', $artist_image_path);
+        $artist_image_path = "img/artists/" . $artist_image_path . ".jpg";
+        if(!file_exists($artist_image_path)) $artist_image_path = "img/music_note.jpg";
+        
 echo <<<HTML
                         
                         <div class="col-md-3 col-sm-6">
                             <div class="modified-artist-container">
-                                <a href="artist_detail.php?artist_name=$artist_name_array[$i]"><img src="img/artists/$artist_image_path.jpg">
+                                <a href="artist_detail.php?artist_name=$artist_name_array[$i]"><img src="$artist_image_path">
                                 <h4>
                                     <strong>$artist_name_array[$i]</strong></a>
                                 </h4>

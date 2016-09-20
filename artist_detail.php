@@ -2,9 +2,10 @@
 <html lang="en">
 
 <?php 
-    error_reporting(0);
+    error_reporting(1);
     // Connect to DB
     include 'database/db.php';
+    include 'scripts/add_artist.php';
     session_start();
     $artist_name = urldecode($_GET['artist_name']);
     $artist_image_path = str_replace(" ", "_", $artist_name);
@@ -23,14 +24,18 @@
     // Retrieve information from DB for the artist
     $query = "SELECT * FROM artist where artist_name = '$artist_name'";
     $result = $mysqli->query($query);
-
-    while(($row_data = $result->fetch_assoc()) !== NULL){
-        $about = $row_data['about'];
-        $current_members = $row_data['current_members'];
-        $signature_song = $row_data['signature_song'];
-        $about_signature_song = $row_data['about_signature_song'];
-        $genre = $row_data['genre'];
-    } 
+    if(mysqli_num_rows($result) > 0){
+        while(($row_data = $result->fetch_assoc()) !== NULL){
+            $about = $row_data['about'];
+            $current_members = $row_data['current_members'];
+            $signature_song = $row_data['signature_song'];
+            $about_signature_song = $row_data['about_signature_song'];
+            $genre = $row_data['genre'];
+        } 
+    } else {
+        $query = "INSERT INTO artist (artist_name) VALUE ('$artist_name')";
+        $result = $mysqli->query($query);
+    }
     
     $current_members = explode(';', $current_members);
    
@@ -44,6 +49,7 @@
         array_push($attended_year, $row_data['year']);
     }
     
+    $query = "SELECT artist_name FROM artis"
     //
 ?>
     
@@ -87,7 +93,7 @@
 
 </head>
 <body id="page-top" background="img/artists/<?php echo $artist_image_path;?>.jpg">
-    <?php    include_once('navigation.php'); ?>
+    <?php    //include_once('navigation.php'); ?>
     <div id='artist-detail-page'>
     <div id="body-container">
         
